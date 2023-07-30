@@ -1,5 +1,5 @@
-import { useBackend } from '../backend';
-import { Section, NoticeBox, Flex } from '../components';
+import { useBackend, useLocalState } from '../backend';
+import { Section, NoticeBox, NumberInput, Table } from '../components';
 import { Window } from '../layouts';
 
 type ICESData = {
@@ -33,21 +33,33 @@ export const IntensityCredits = (props, context) => {
     highpop_multiplier,
   } = data;
 
+  const [number, setNumber] = useLocalState(context, 'number', 0);
+
   return (
     <Window title="ICES Events Panel" width={480} height={320} theme="admin">
       <Window.Content>
         <Section title="Status">
-          <Flex direction="column">
-            <Flex.Item>Intensity Credits: {current_credits}</Flex.Item>
-            <Flex.Item>Next Event: {next_run}</Flex.Item>
-            <Flex.Item>Active Players: {active_players}</Flex.Item>
-            <Flex.Item>Highpop Threshold: {highpop_players}</Flex.Item>
-            <Flex.Item>Highpop Multiplier: {highpop_multiplier}x</Flex.Item>
-            <Flex.Item>Midpop Threshold: {midpop_players}</Flex.Item>
-            <Flex.Item>Midpop Multiplier: {midpop_multiplier}x</Flex.Item>
-            <Flex.Item>Lowpop Threshold: {lowpop_players}</Flex.Item>
-            <Flex.Item>Lowpop Multiplier: {lowpop_multiplier}x</Flex.Item>
-          </Flex>
+          <Table>
+            <Table.Row>
+              <Table.Cell>Intensity Credits:</Table.Cell>
+              <Table.Cell>
+                <NumberInput
+                  animated
+                  width="40px"
+                  step={1}
+                  stepPixelSize={8}
+                  value={current_credits}
+                  minValue={0}
+                  maxValue={5}
+                  onChange={(e, value) =>
+                    act('setCredits', {
+                      current_credits: value,
+                    })
+                  }
+                />
+              </Table.Cell>
+            </Table.Row>
+          </Table>
         </Section>
         <Section title="Configuration">
           <NoticeBox>

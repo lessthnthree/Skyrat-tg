@@ -46,3 +46,11 @@
 	)
 
 	return data
+
+/datum/intensity_credits_panel/ui_act(action, params)
+	if(..())
+		return TRUE
+	switch(action)
+		if("setCredits")
+			GLOB.intense_event_credits = text2num(params["current_credits"])
+			return TRUE
