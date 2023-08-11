@@ -137,6 +137,8 @@
 	else
 		lights_overlay = ""
 		set_light(l_on = FALSE)
+		if(multi_tile)
+			filler.set_light(l_on = FALSE)
 
 	var/mutable_appearance/lights_appearance = mutable_appearance(overlays_file, lights_overlay, FLOAT_LAYER, src, ABOVE_LIGHTING_PLANE)
 
