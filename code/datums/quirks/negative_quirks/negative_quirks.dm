@@ -1299,14 +1299,14 @@
 			carbon_quirk_holder.adjustOrganLoss(pick(ORGAN_SLOT_BRAIN,ORGAN_SLOT_APPENDIX,ORGAN_SLOT_LUNGS,ORGAN_SLOT_HEART,ORGAN_SLOT_LIVER,ORGAN_SLOT_STOMACH),10)
 
 /datum/quirk/numbness
-	name = "Phisically Numb"
-	desc = "For whatever reason, you cannot feel pain at all. You take more time to inspect yourself for wounds without specialized equipment."
+	name = "Analgesia"
+	desc = "For whatever reason, you can't feel pain at all. You take more time to inspect yourself for wounds without specialised equipment."
 	icon = ""
-	mob_trait = TRAIT_PAIN_NUMB
+	mob_trait = TRAIT_ANALGESIA
 	value = -4
 	gain_text = null //handled by trauma
 	lose_text = null
-	medical_record_text = "Patient cannot feel pain of any sort. Potentially deadly with certain activites."
+	medical_record_text = "Patient can't feel pain of any sort. Potentially deadly with certain activites."
 	mail_goodies = list(/obj/item/healthanalyzer) // It's dangerous to go alone! Take this with you.
 
 /datum/quirk/numbness/add(client/client_source)

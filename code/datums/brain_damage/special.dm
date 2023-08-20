@@ -272,17 +272,19 @@
 
 /datum/brain_trauma/special/numbness
 	name = "Numbness"
-	desc = "Patient cannot feel or percieve pain and injuries no matter their gravity."
+	desc = "Patient is insensitive to pain and injuries and environmental hazards."
 	scan_desc = "Neurotic Analgesia"
 	gain_text = span_warning("Your wounds do not hurt anymore.")
 	lose_text = span_warning("You feel your injuries sting again.")
 
 /datum/brain_trauma/special/numbness/on_gain()
+	ADD_TRAIT(owner, TRAIT_ANALGESIA, QUIRK_TRAIT)
 	owner.add_traits(list(TRAIT_NOSOFTCRIT), QUIRK_TRAIT)
 	owner.apply_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
 	..()
 
 /datum/brain_trauma/special/numbness/on_lose()
+	REMOVE_TRAIT(owner, TRAIT_ANALGESIA, QUIRK_TRAIT)
 	owner.remove_traits(list(TRAIT_NOSOFTCRIT), QUIRK_TRAIT)
 	owner.remove_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
 	..()

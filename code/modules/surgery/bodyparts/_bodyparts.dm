@@ -282,7 +282,7 @@
 	var/shown_burn = limb_damage[BURN]
 	var/status = ""
 	var/self_aware = HAS_TRAIT(examiner, TRAIT_SELF_AWARE)
-	var/pain_numb = HAS_TRAIT (examiner, TRAIT_PAIN_NUMB)
+	var/pain_numb = HAS_TRAIT (examiner, TRAIT_ANALGESIA)
 
 	if(self_aware)
 		if(!shown_brute && !shown_burn)
