@@ -172,12 +172,13 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 
 		// ANYTHING ELSE = UNKNOWN_JOB_ID, Unknowns/custom jobs will appear after civilians, and before assistants
 		JOB_ASSISTANT = 999,
+		JOB_PRISONER = 401, //SKYRAT EDIT ADDITION
 	)
 
 /datum/crewmonitor/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		ui = new(user, src, "CrewConsoleSkyrat")
+		ui = new(user, src, "CrewConsoleSkyrat") // SKYRAT EDIT CHANGE
 		ui.open()
 
 /datum/crewmonitor/proc/show(mob/M, source)
